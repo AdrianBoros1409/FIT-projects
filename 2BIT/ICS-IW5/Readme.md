@@ -1,4 +1,4 @@
-<h1>Project imported from Azure DevOps source control</h1>
+<h1>Projekt ICS/IW5</h1>
 https://dev.azure.com/ics-iw5-2019-team4653/_git/project
 
 <br>
