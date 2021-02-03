@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="PasswordLogin" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="TeamsHeader_AppPanel" xml:space="preserve">
+    <value>Teams</value>
+  </data>
+  <data name="AddUser_Button" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="AddTeam_Button" xml:space="preserve">
+    <value>Add Team</value>
+  </data>
+  <data name="AddTeam_Text" xml:space="preserve">
+    <value>Create your own Team with administrator benefits!</value>
+  </data>
+  <data name="AddUser_Text" xml:space="preserve">
+    <value>Add another User and let him enjoy Fitter too!</value>
+  </data>
+  <data name="CreatePost_Button" xml:space="preserve">
+    <value>Create Post</value>
+  </data>
+  <data name="Comment_Button" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="UserInfo_Title" xml:space="preserve">
+    <value>User information:</value>
+  </data>
+  <data name="UsersTeams_Text" xml:space="preserve">
+    <value>User's teams:</value>
+  </data>
+  <data name="LastActivity_Text" xml:space="preserve">
+    <value>Last Activity:</value>
+  </data>
+  <data name="TeamInfo_Title" xml:space="preserve">
+    <value>Team informations:</value>
+  </data>
+  <data name="Admin_Text" xml:space="preserve">
+    <value>Admin:</value>
+  </data>
+  <data name="UsersInTeam_Text" xml:space="preserve">
+    <value>Users in team:</value>
+  </data>
+  <data name="RemoveUser_Title" xml:space="preserve">
+    <value>Remove User</value>
+  </data>
+  <data name="AddUser_Title" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="FirstName_Text" xml:space="preserve">
+    <value>First name:</value>
+  </data>
+  <data name="LastName_Text" xml:space="preserve">
+    <value>Last name:</value>
+  </data>
+  <data name="CreateUser_Button" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="AddTeam_Title" xml:space="preserve">
+    <value>Add Team</value>
+  </data>
+  <data name="TeamName_Text" xml:space="preserve">
+    <value>Team name:</value>
+  </data>
+  <data name="TeamDesc_Text" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="CreateTeam_Button" xml:space="preserve">
+    <value>Create Team</value>
+  </data>
+  <data name="LoginError_Message" xml:space="preserve">
+    <value>Incorrect email or password.</value>
+  </data>
+  <data name="SameTeam_Message" xml:space="preserve">
+    <value>Team with typed name already exists!</value>
+  </data>
+  <data name="SameUser_Message" xml:space="preserve">
+    <value>User with that email address already exists!</value>
+  </data>
+  <data name="NoUser_Message" xml:space="preserve">
+    <value>User does not exists!</value>
+  </data>
+  <data name="WrongPassword_Message" xml:space="preserve">
+    <value>Wrong Password!</value>
+  </data>
+  <data name="KickAdmin_Message" xml:space="preserve">
+    <value>You can not kick the Admin!</value>
+  </data>
+  <data name="LeaveTeam_Message" xml:space="preserve">
+    <value>Are you sure you want to leave the team?</value>
+  </data>
+  <data name="LeaveAdmin_Message" xml:space="preserve">
+    <value>You are the Admin, you can not leave!</value>
+  </data>
+  <data name="DeleteTeam_Message" xml:space="preserve">
+    <value>Are you sure you want to delete the team?</value>
+  </data>
+  <data name="CanNotDeleteTeam_Message" xml:space="preserve">
+    <value>Only the Admin can delete the team!</value>
+  </data>
+  <data name="CanNotDeleteComment_Message" xml:space="preserve">
+    <value>Only the author can delete the comment!</value>
+  </data>
+  <data name="DeleteComment_Message" xml:space="preserve">
+    <value>Are you sure you want to delete the comment?</value>
+  </data>
+  <data name="CanNotDeletePost_Message" xml:space="preserve">
+    <value>Only the author can delete the post!</value>
+  </data>
+  <data name="DeletePost_Message" xml:space="preserve">
+    <value>Are you sure you want to delete the post?</value>
+  </data>
+  <data name="Post_Message" xml:space="preserve">
+    <value>Write what's on your mind...</value>
+  </data>
+  <data name="FullName_Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="TeamsHeader_Text" xml:space="preserve">
+    <value>Teams:</value>
+  </data>
+  <data name="PostTitle_Message" xml:space="preserve">
+    <value>Add title here...</value>
+  </data>
+  <data name="LeaveTeam_MTitle" xml:space="preserve">
+    <value>Leave Team</value>
+  </data>
+  <data name="DeleteTeam_MTitle" xml:space="preserve">
+    <value>Delete Team</value>
+  </data>
+  <data name="DeleteComment_MTitle" xml:space="preserve">
+    <value>Delete Comment</value>
+  </data>
+  <data name="DeletePost_MTitle" xml:space="preserve">
+    <value>Delete Post</value>
+  </data>
+  <data name="Restart_Message" xml:space="preserve">
+    <value>Restart the application to apply changes.</value>
+  </data>
+  <data name="ChangeLang_Text" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="MissingText_Message" xml:space="preserve">
+    <value>Missing Text</value>
+  </data>
+</root>

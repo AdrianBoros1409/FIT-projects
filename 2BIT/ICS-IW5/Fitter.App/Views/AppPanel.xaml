@@ -1,0 +1,65 @@
+﻿<local:UserControlBase x:Class="Fitter.App.Views.AppPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fitter.App.Views"
+             xmlns:viewModels="clr-namespace:Fitter.App.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:texts="clr-namespace:Fitter.App.Resources.Texts"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:AppPanelViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=AppPanelViewModel}">
+    <Grid Visibility="{Binding Model, Converter={StaticResource NullToVisibilityConverter}}" Background="#1f2124">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Row="0" Margin="0" Width="180" Height="65">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/logo.png"/>
+            </Grid.Background>
+        </Grid>
+        <Grid Row="1">
+            <Button Width="75" Height="75" Command="{Binding GoToHomeCommand}">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="Images/HomeButton.png"></ImageBrush>
+                            </Grid.Background>
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <Grid Row="2">
+            <Button Height="24" Width="24" HorizontalAlignment="Left" Margin="30,0,0,0" BorderBrush="{x:Null}" Command="{Binding UserInfoCommand}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/profile2.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="{x:Static texts:TextResources.TeamsHeader_AppPanel}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFE6D4D4" Padding="5,0"/>
+            <Separator  Height="4" Margin="30,30,30,0" Width="auto" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Background="DimGray"/>
+        </Grid>
+        <Grid Row="3">
+            <ListBox x:Name="TeamsListBox" ItemsSource="{Binding Teams}" HorizontalContentAlignment="Center" Margin="30,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding TeamSelectedCommand}"
+                                               CommandParameter="{Binding ElementName=TeamsListBox, Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}" Foreground="#FFE6D4D4" FontSize="16"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</local:UserControlBase>
