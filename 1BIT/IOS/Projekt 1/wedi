@@ -1,1 +1,211 @@
+#!/bin/sh
 
+# Autor: Adrian Boros (xboros03)
+
+export POSSIXLY_CORRECT=yes
+
+TRACE=$(realpath .)
+DATE=$(date '+%Y-%m-%d')
+FILENAME="$1"
+
+error_edit()
+{
+  echo "ERROR: No edited file" >&2
+  exit 1
+}
+
+error_Arg()
+{
+  echo "ERROR: Too many arguments" >&2
+  exit 1
+}
+
+error_Date()
+{
+  echo "ERROR: Date must be in format YYYY-MM-DD" >&2
+  exit 1
+}
+
+error_Dir()
+{
+  echo "ERROR: WEDI_RC is a directory"
+  exit 1
+}
+
+#test ci je realpath funkcny
+if [ -z "$TRACE" ]; then
+  echo "ERROR: Realpath is functionless" >&2
+  exit 1
+fi
+
+#test ci bolo WEDI_RC nastavene
+if [ -z "$WEDI_RC" ]; then
+  echo "ERROR: WEDI_RC was not set" >&2
+  exit 1
+elif [ -d "$WEDI_RC" ]; then
+    error_Dir
+elif ! [ -f "$WEDI_RC" ]; then
+    mkdir -p "$(dirname "$WEDI_RC")"
+    touch "$WEDI_RC"
+fi
+
+#prida zaznam do nastaveneho suboru
+if [ -z "$EDITOR" ]; then
+    if [ -z "$VISUAL" ]; then
+      openWith='vi'
+    else
+      openWith=$VISUAL
+    fi
+  else
+    openWith=$EDITOR
+fi
+
+#funkcia na editovanie suboru
+edit()
+{
+  if echo "$FILENAME" | grep -q "^[^\-].*"; then
+    $openWith "$FILENAME"
+    name=$(basename "$FILENAME")
+    echo "$name#$(realpath "$FILENAME")#$DATE">> "$WEDI_RC"
+  fi
+}
+
+#editovanie posledneho suboru ak nie je zadany ziadny argument
+if [ $# -eq 0 ]; then
+  FILENAME=$(grep -E "$TRACE" "$WEDI_RC" | cut -f 2 -d '#' | tail -n1 | cut -d " " -f1)
+  edit
+  if [ -z "$FILENAME" ]; then
+    error_edit
+  fi
+fi
+
+#editovanie suboru ak je subor vytvoreny
+if [ $# -eq 1 ] && [ -f "$FILENAME" ]; then
+  edit
+fi
+if [ -d "$FILENAME" ]; then
+  TRACE=$(realpath "$1")
+  FILENAME=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | cut -f 2 -d '#' | tail -n1 | cut -d " " -f1)
+  edit
+  if [ -z "$FILENAME" ]; then
+    error_edit
+  fi
+fi
+
+#Error ak subor nie je vytvoreny
+if [ $# -eq 1 ] && ! [ -f "$FILENAME" ] && ! [ "$1" = "-l" ] && ! [ "$1" = "-m" ]; then
+  echo "ERROR: File does not exist"
+  exit 1
+fi
+
+#Vypis vsetkych editovanych suborov
+if [ $# -eq 1 ] && [ "$1" = "-l" ]; then
+  output=$(grep -E "$TRACE" "$WEDI_RC" | sed -n '1!G;h;$p' | cut -f 1 -d '#' | sort | uniq)
+  if ! [ -z "$output" ]; then  
+    echo "$output"
+elif [ -z "$output" ]; then
+    error_edit
+  fi
+elif [ $# -eq 2 ] && [ "$1" = "-l" ]; then
+  TRACE=$(realpath "$2")
+  output=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sed -n '1!G;h;$p' | cut -f 1 -d '#' | sort | uniq)
+  if ! [ -z "$output" ]; then  
+    echo "$output"
+elif [ -z "$output" ]; then
+    error_edit
+  fi
+  if [ $# -gt 2 ]; then
+    error_Arg
+  fi
+fi
+
+#editovanie suboru ktory sa nachadza vo WEDI_RC najcastejsie
+if [ $# -eq 1 ] && [ "$1" = "-m" ]; then
+  FILENAME=$(grep -E "$TRACE" "$WEDI_RC" | sed -n '1!G;h;$p' | cut -f 2 -d '#' | sort |uniq -c | sort -r | awk '{print $2}' | head -n1)
+  edit
+  if [ -z "$FILENAME" ]; then
+    error_edit
+  fi 
+elif [ $# -eq 2 ] && [ "$1" = "-m" ]; then
+  TRACE=$(realpath "$2")
+  FILENAME=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sed -n '1!G;h;$p' | cut -f 2 -d '#' | sort |uniq -c | sort -r | awk '{print $2}' | head -n1)
+  edit
+  if [ -z "$FILENAME" ]; then
+    error_edit
+  fi 
+  if [ $# -gt 2 ]; then
+    error_Arg
+  fi
+fi
+
+#vypis suborov po zadani argumentu -a
+if [ $# -eq 2 ] && [ "$1" = "-a" ]; then
+  if echo "$2" | grep -E -q '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+    edit_File=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sort | uniq)
+    datum=$(echo "$2" | tr -d '-')
+    for x in $edit_File; do
+      edit_Time=$(echo "$x" | cut -d"#" -f3 | tr -d '-')
+      if [ "$edit_Time" -ge "$datum" ]; then
+        output=$(echo "$x" | cut -d"#" -f1)
+      fi
+    if [ -n "$output" ];then
+         echo "$output"
+    fi
+  done | sort | uniq 
+    else   
+    error_Date
+  fi
+elif [ $# -eq 3 ] && [ "$1" = "-a" ]; then
+  TRACE=$(realpath "$3")
+  if echo "$2" | grep -E -q '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+    edit_File=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sort | uniq)
+    datum=$(echo "$2" | tr -d '-')
+    for x in $edit_File; do
+      edit_Time=$(echo "$x" | cut -d"#" -f3 | tr -d '-')
+      if [ "$edit_Time" -ge "$datum" ]; then
+        output=$(echo "$x" | cut -d"#" -f1)
+      fi
+    if [ -n "$output" ];then
+         echo "$output"
+    fi
+  done | sort | uniq 
+    else   
+      error_Date
+  fi
+fi
+
+#vypis suborov po zadani argumentu -b
+if [ $# -eq 2 ] && [ "$1" = "-b" ]; then
+  if echo "$2" | grep -E -q '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+    edit_File=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sort | uniq)
+    datum=$(echo "$2" | tr -d '-')
+    for x in $edit_File; do
+      edit_Time=$(echo "$x" | cut -d"#" -f3 | tr -d '-')
+      if [ "$edit_Time" -lt "$datum" ]; then
+        output=$(echo "$x" | cut -d"#" -f1)
+      fi
+    if [ -n "$output" ];then
+         echo "$output"
+    fi
+  done | sort | uniq 
+    else   
+    error_Date
+  fi
+elif [ $# -eq 3 ] && [ "$1" = "-b" ]; then
+  TRACE=$(realpath "$3")
+  if echo "$2" | grep -E -q '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+    edit_File=$(grep -E "$TRACE/[^/]*$" "$WEDI_RC" | sort | uniq)
+    datum=$(echo "$2" | tr -d '-')
+    for x in $edit_File; do
+      edit_Time=$(echo "$x" | cut -d"#" -f3 | tr -d '-')
+      if [ "$edit_Time" -lt "$datum" ]; then
+        output=$(echo "$x" | cut -d"#" -f1)
+      fi
+    if [ -n "$output" ];then
+         echo "$output"
+    fi
+  done | sort | uniq 
+    else   
+      error_Date
+  fi
+fi
