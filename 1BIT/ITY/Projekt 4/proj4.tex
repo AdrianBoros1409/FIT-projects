@@ -1,1 +1,58 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,top=3cm,text={17cm,24cm}]{geometry}
+\usepackage{times}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks = true, citecolor = black, urlcolor = black}
 
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\Huge
+\textsc{Vysoké učení technické v~Brně}\\
+\huge
+\textsc{Fakulta informačních technologií}\\
+\vspace{\stretch{0.382}}
+\LARGE Typografie a~publikování\,--\,4. projekt\\
+\Huge Bibliografické citácie\\
+\vspace{\stretch{0.618}}
+\Large
+\today\hfill Adrián Boros (xboros03)
+\end{center}
+\end{titlepage}
+
+\section{\TeX}
+{\TeX} je počítačový program vytvorený profesorom Donaldom E. Knuthom \cite{Knuth1986}.
+Tento program je vyvrcholením snahy o~dokonalú počítačovú sadzbu odborných textov.
+Je určený predovšetkým pre sadzbu textu a~matematických rovníc, pre zachovanie vysokej typografickej
+úrovni výsledného dokumentu. Tento program obsahuje viac ako 300 príkazov, pomocou ktorých sa dajú vytvárať a~upravovať nové ale aj existujúce vlastnosti.
+
+\section{\LaTeX}
+{\LaTeX} je balík makier, ktorý umožňuje autorom sadzbu a~tlač ich diela
+v~najvyššej možnej typografickej kvalite, pričom autor používa profesionálmi
+preddefinovaných vzhľadov dokumentov. {\LaTeX} bol pôvodne napísaný Leslie
+Lamportom \cite{Lamport1994}. {\LaTeX} je postavený na formátovacom programe {\TeX}. 
+Hlavnou výhodou {\LaTeX}u je výsoká kvalita dokumentov, flexibilita a podpora pre rôzne oblasti. O~podrobnejších rozdieloch medzi systémami \TeX\ a~\LaTeX\ nás informuje kniha od Jiřího Rybičky \cite{Rybicka2003}. Webstránka \cite{Simecek2013} popisuje čo {\LaTeX} je, ako ho používať vo svojom počítači ale aj dôvody prečo používať {\LaTeX} namiesto Wordu, Writeru a~iných textových editorov. 
+
+\subsection{{\LaTeX} online}
+Na internete existuje veľký počet rôznych nástrojov na tvorbu dokumentov priamo v~prehliadači.
+Je tam možné nájsť množstvo dokumentov a~článkov ktoré sa venujú problematike typografii ale aj {\LaTeX}u. 
+Medzi najpopulárnejšie je možné zaradiť \textit{{\LaTeX}ové speciality} od Davida Martinka\cite{Martinek2010}. 
+Dôkazom toho že {\LaTeX} a~typografia sú stále viac a~viac populárne je aj stránka, ktorá vás zavedie do sveta typografie\cite{Brabec2002}.
+
+\subsection{{\LaTeX} a vysoká škola}
+Pri písaní rôznych prác do školy alebo dokumentácií je potreba túto prácu napísať čo najrýchlejšie a~čo najkvalitnejšie.
+Veľa študentov využíva {\LaTeX} na písanie svojich bakalárskych či diplomových prác. Mnochých z~nich tak nadchla téma typografie, že sa rozhodli vypracovať svoju prácu práve na túto tému. Medzi takéto práce patrí diplomová práca\cite{Cerny2010} alebo bakalárska práca\cite{Simek2009}.
+
+\subsection{{\LaTeX} v~tlačenej forme}
+Ďalším dôkazom toho že {\LaTeX} je stále viac a~viac populárny je aj fakt, že mnoho časopisov sa venuje práve tejto téme. Medzi najpopulárnejšie domáce časopisy patrí napríklad Typografia\cite{TypografiaCz}, avšak jeho vydanie je pozastavené od roku 2015.
+Mnoho článkov sa venuje tejto problematike, ako napríklad účasť typografii v~grafickom užívateľskom rozhraní\cite{Kahn1998}. Tento článok opisuje ako sa typografické princípy uplaňujú v~elektronickom médiu. Definuje typografiu ako dynamický systém kontrastov vyplývajúci zo vzťahu typ\,--\,pozadie. Článok\cite{Sullivan2016} popisuje kombináciu písania pomocou {\LaTeX}u a~matematického prostredia MATLAB na zlepšenie písania, kódovania a~matematického chápania študentov.
+
+\newpage
+\bibliographystyle{czechiso}
+\renewcommand{\refname}{Literatúra}
+\bibliography{proj4}
+
+\end{document}
