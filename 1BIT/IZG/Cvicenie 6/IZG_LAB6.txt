@@ -2,7 +2,7 @@
 * @file
 * @brief This file contains implementation of exercise.
 *
-* @author TomÃ¡Å¡ Milet, imilet@fit.vutbr.cz
+* @author Tomáš Milet, imilet@fit.vutbr.cz
 *
 */
 
@@ -51,22 +51,22 @@ struct PhongVariables {
 	   /// \addtogroup vs Vertex Shader
 	   /// @{
 
-	   /// \addtogroup task2 DruhÃ½ Ãºkol
+	   /// \addtogroup task2 Druhı úkol
 	   /// @{
 	   /// \todo 2.1.) Doimplementujte vertex shader.
-	   /// VaÅ¡im Ãºkolem je pÅ™idat uniformnÃ­ promÄ›nnÃ© pro view a projekÄnÃ­ matici.
-	   /// DÃ¡le pronÃ¡sobte pozici vrcholu tÄ›mito maticemi a zapiÅ¡te vÃ½sledek do gl_Position.
-	   /// NezapomeÅˆte, Å¾e pÃ­Å¡ete v jazyce GLSL, kterÃ½ umoÅ¾Åˆuje prÃ¡ci s maticovÃ½mi a vektorovÃ½mi typy.
-	   /// Upravujte phongVertexShaderSource promÄ›nnou.
+	   /// Vašim úkolem je pøidat uniformní promìnné pro view a projekèní matici.
+	   /// Dále pronásobte pozici vrcholu tìmito maticemi a zapište vısledek do gl_Position.
+	   /// Nezapomeòte, e píšete v jazyce GLSL, kterı umoòuje práci s maticovımi a vektorovımi typy.
+	   /// Upravujte phongVertexShaderSource promìnnou.
 	   /// @}
 
-	   /// \addtogroup task3 TÅ™etÃ­ Ãºkol
+	   /// \addtogroup task3 Tøetí úkol
 	   /// @{
 	   /// \todo 3.1.) Upravte vertex shader.
-	   /// VaÅ¡im Ãºkolem je pÅ™idat druhÃ½ vertex atribut - normÃ¡lu vrcholu.
-	   /// DÃ¡le pÅ™idejte dvÄ› vÃ½stupnÃ­ promÄ›nnÃ© typu vec3 a zapiÅ¡te do nich pozici a normÃ¡lu vrcholu ve world-space.
-	   /// Tyto promÄ›nnÃ© budete potÅ™ebovat pro vÃ½poÄet osvÄ›tlenÃ­.
-	   /// Upravujte phongVertexShaderSource promÄ›nnou.
+	   /// Vašim úkolem je pøidat druhı vertex atribut - normálu vrcholu.
+	   /// Dále pøidejte dvì vıstupní promìnné typu vec3 a zapište do nich pozici a normálu vrcholu ve world-space.
+	   /// Tyto promìnné budete potøebovat pro vıpoèet osvìtlení.
+	   /// Upravujte phongVertexShaderSource promìnnou.
 	   /// @}
 
 	   /// This variable contains vertex shader source for phong shading/lighting.
@@ -92,42 +92,41 @@ char const*phongVertexShaderSource =
 /// \addtogroup fs Fragment Shader
 /// @{
 
-/// \addtogroup task3 TÅ™etÃ­ Ãºkol
+/// \addtogroup task3 Tøetí úkol
 /// @{
-/// \todo 3.2.) Upravte fragment shader (promÄ›nnÃ¡ phongFragmentShaderSource).
-/// VaÅ¡im Ãºkolem je implementovat phongÅ¯v osvÄ›tlovacÃ­ model.
-/// PÅ™idejte dvÄ› vstupnÃ­ promÄ›nnÃ© (typ vec3) stejnÃ©ho nÃ¡zvu, jako novÄ› pÅ™idanÃ© vÃ½stupnÃ­ promÄ›nnÃ© ve vertex shaderu.
-/// V jednÃ© obdrÅ¾Ã­te pozice fragmentu ve world-space.
-/// V druhÃ© obdrÅ¾Ã­te normÃ¡lu fragmentu ve world-space.
-/// DÃ¡le pÅ™idejte dvÄ› uniformnÃ­ promÄ›nnÃ© (typ vec3) pro pozici kamery a pro pozici svÄ›tla.
-/// DifuznÃ­ barvu materiÃ¡lu nastave na vec3(0.f,1.f,0.f) - zelenÃ¡.<br/>
-/// SpekulÃ¡nÃ­ barvu materiÃ¡lu nastavte na vec3(1.f,1.f,1.f) - bÃ­lÃ¡.<br/>
+/// \todo 3.2.) Upravte fragment shader (promìnná phongFragmentShaderSource).
+/// Vašim úkolem je implementovat phongùv osvìtlovací model.
+/// Pøidejte dvì vstupní promìnné (typ vec3) stejného názvu, jako novì pøidané vıstupní promìnné ve vertex shaderu.
+/// V jedné obdríte pozice fragmentu ve world-space.
+/// V druhé obdríte normálu fragmentu ve world-space.
+/// Dále pøidejte dvì uniformní promìnné (typ vec3) pro pozici kamery a pro pozici svìtla.
+/// Difuzní barvu materiálu nastave na vec3(0.f,1.f,0.f) - zelená.<br/>
+/// Spekulání barvu materiálu nastavte na vec3(1.f,1.f,1.f) - bílá.<br/>
 /// Shininess faktor nastavte na 40.f.<br/>
-/// PÅ™edpoklÃ¡dejte, Å¾e svÄ›tlo mÃ¡ bÃ­lou barvu.<br/>
-/// Barva se vypoÄÃ­ta podle vzorce dF*dM*dL + sF*sM*sL.<br/>
-/// dM,sM jsou difuznÃ­/spekulÃ¡rnÃ­ barvy materiÃ¡lu - vektory.<br/>
-/// dL,sL jsou difuznÃ­/spekulÃ¡rnÃ­ barvy svÄ›tla - vektory.<br/>
-/// dF,sF jsou difuznÃ­/spekulÃ¡rnÃ­ faktory - skalÃ¡ry.<br/>
-/// dF lze vypoÄÃ­st pomocÃ­ vztahu clamp(dot(N,L),0.f,1.f) - skalÃ¡rnÃ­ souÄin a oÅ™ez do rozsahu [0,1].<br/>
-/// N je normÃ¡la fragmentu (nezapomeÅˆte ji normalizovat).<br/>
-/// L je normalizovanÃ½ vektor z pozice fragmentu smÄ›rem ke svÄ›tlu.<br/>
-/// sF lze vypoÄÃ­st pomocÃ­ vztahu (clamp(dot(R,L),0.f,1.f))^s - skalÃ¡rnÃ­ souÄin, oÅ™ez do rozsahu [0,1] a umocnÄ›nÃ­.<br/>
+/// Pøedpokládejte, e svìtlo má bílou barvu.<br/>
+/// Barva se vypoèíta podle vzorce dF*dM*dL + sF*sM*sL.<br/>
+/// dM,sM jsou difuzní/spekulární barvy materiálu - vektory.<br/>
+/// dL,sL jsou difuzní/spekulární barvy svìtla - vektory.<br/>
+/// dF,sF jsou difuzní/spekulární faktory - skaláry.<br/>
+/// dF lze vypoèíst pomocí vztahu clamp(dot(N,L),0.f,1.f) - skalární souèin a oøez do rozsahu [0,1].<br/>
+/// N je normála fragmentu (nezapomeòte ji normalizovat).<br/>
+/// L je normalizovanı vektor z pozice fragmentu smìrem ke svìtlu.<br/>
+/// sF lze vypoèíst pomocí vztahu (clamp(dot(R,L),0.f,1.f))^s - skalární souèin, oøez do rozsahu [0,1] a umocnìní.<br/>
 /// s je shininess faktor.<br/>
-/// R je odraÅ¾enÃ½ pohledovÃ½ vektor V; R = reflect(-V,N).<br/>
-/// V je normalizovanÃ½ pohledovÃ½ vektor z pozice kamery do pozice fragmentu.<br/>
+/// R je odraenı pohledovı vektor V; R = reflect(-V,N).<br/>
+/// V je normalizovanı pohledovı vektor z pozice kamery do pozice fragmentu.<br/>
 /// <br/>
-/// NezapomeÅˆte, Å¾e programujete v jazyce GLSL, kterÃ½ zvlÃ¡dÃ¡ vektorovÃ© operace.<br/>
-/// <b>Seznam uÅ¾iteÄnÃ½ch funkcÃ­:</b>
-///  - dot(x,y) - funkce vracÃ­ skalÃ¡rnÃ­ souÄit dvou vektorÅ¯ x,y stejnÃ© dÃ©lky
-///  - clamp(x,a,b) - funkce vracÃ­ oÅ™ezanou hodnotu x do intervalu [a,b]
-///  - normalize(x) - funkce vracÃ­ normalizovanÃ½ vektor x
-///  - reflect(I,N) - funkce vracÃ­ odraÅ¾enÃ½ vektor I podle normÃ¡ly N
+/// Nezapomeòte, e programujete v jazyce GLSL, kterı zvládá vektorové operace.<br/>
+/// <b>Seznam uiteènıch funkcí:</b>
+///  - dot(x,y) - funkce vrací skalární souèit dvou vektorù x,y stejné délky
+///  - clamp(x,a,b) - funkce vrací oøezanou hodnotu x do intervalu [a,b]
+///  - normalize(x) - funkce vrací normalizovanı vektor x
+///  - reflect(I,N) - funkce vrací odraenı vektor I podle normály N
 /// @}
 
 /// This variable contains fragment shader source for phong shading/linghting.
 char const*phongFragmentShaderSource =
 "#version 330\n"
-"#line 130\n"
 "layout(location=0)out vec4 fColor;\n"
 
 "in vec3 N;\n"
@@ -142,29 +141,22 @@ char const*phongFragmentShaderSource =
 "  vec3 L = normalize(lightPos - fragmentPos);\n"
 "  vec3 Normal = normalize(N);\n"
 
-"  vec3 dM;\n"
-"  if(Normal[1] < 0) dM = vec3(0.f, 1.f, 0.f);\n"
-"  else if((Normal[1] > 0 && Normal[1] < 1)){ \n"
-"  float prechod = pow(Normal[1], Normal[1]);\n"
-"  vec3 dM = vec3(prechod, 1.f, prechod);\n"
-"  };\n"
+"  vec3 dM = vec3(0.f,1.f,0.f);\n"
 "  vec3 dL = vec3(1.f,1.f,1.f);\n"
 "  vec3 sM = vec3(1.f,1.f,1.f);\n"
 "  vec3 sL = vec3(1.f,1.f,1.f);\n"
+
 "  vec3 R = reflect(-V,Normal);\n"
+
 "  float dF = clamp(dot(Normal,L),0.f,1.f);\n"
 "  float sF = pow((clamp(dot(R,L),0.f,1.f)), 40);\n"
 "  vec3 phong = dF * dM * dL + sF * sM * sL;\n"
 
 "  fColor = vec4(phong, 1.f);\n"
 
+
 "}\n";
 /// @}
-
-/*if (Normal[1] < 0)  vec3 dM = vec3(0.f, 1.f, 0.f)
-	Else if (Normal[1] > 0 && Normal[1] < 1) {
-	float prechodBarev = pow(Normal[1], Normal[1]);
-	Vec3 dM = vec3(prechodBarev, 1.f, prechodBarev);*/
 
 /// \addtogroup init Inicializace
 /// @{
@@ -183,21 +175,21 @@ void phong_onInit(int32_t width, int32_t height) {
 	phong.program = linkProgram(
 		vertexId, fragmentId);
 
-	/// \addtogroup task1 PrvnÃ­ Ãºkol
+	/// \addtogroup task1 První úkol
 	/// @{
-	/// \todo 1.1.) Doprogramujte inicializaÄnÃ­ funkci phong_onInit().
-	/// Zde byste mÄ›li vytvoÅ™it buffery na GPU, nahrÃ¡t data do bufferÅ¯, vytvoÅ™it vertex arrays object a sprÃ¡vnÄ› jej nakonfigurovat.
-	/// Do bufferÅ¯ nahrajte vrcholy krÃ¡liÄka (pozice, normÃ¡ly) a indexy na vrcholy ze souboru bunny.h.
-	/// V konfiguraci vertex arrays objektu zatÃ­m nastavte pouze jeden vertex atribut - pro pozici.
-	/// VyuÅ¾ijte promÄ›nnÃ© ve struktuÅ™e PhongVariables (vbo, ebo, vao).
-	/// Do promÄ›nnÃ© phong.vbo zapiÅ¡te id bufferu obsahujÃ­cÃ­ vertex atributy.
-	/// Do promÄ›nnÃ© phong.ebo zapiÅ¡te id bufferu obsahujÃ­cÃ­ indexy na vrcholy.
-	/// Do promÄ›nnÃ© phong.vao zapiÅ¡te id vertex arrays objektu.
-	/// Data vertexÅ¯ naleznete v promÄ›nnÃ© bunny.h/bunnyVertices - ty pÅ™ekopÃ­rujte do bufferu phong.vbo.
-	/// Data indexÅ¯ naleznete v promÄ›nnÃ© bunny.h/bunnyIndices - ty pÅ™ekopÃ­rujte do bufferu phong.ebo.
-	/// Dejte si pozor, abyste sprÃ¡vnÄ› nastavili stride a offset ve funkci glVertexAttribPointer.
-	/// Vrchol krÃ¡liÄka je sloÅ¾en ze dvou vertex atributÅ¯: pozice a normÃ¡la.<br/>
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// \todo 1.1.) Doprogramujte inicializaèní funkci phong_onInit().
+	/// Zde byste mìli vytvoøit buffery na GPU, nahrát data do bufferù, vytvoøit vertex arrays object a správnì jej nakonfigurovat.
+	/// Do bufferù nahrajte vrcholy králièka (pozice, normály) a indexy na vrcholy ze souboru bunny.h.
+	/// V konfiguraci vertex arrays objektu zatím nastavte pouze jeden vertex atribut - pro pozici.
+	/// Vyuijte promìnné ve struktuøe PhongVariables (vbo, ebo, vao).
+	/// Do promìnné phong.vbo zapište id bufferu obsahující vertex atributy.
+	/// Do promìnné phong.ebo zapište id bufferu obsahující indexy na vrcholy.
+	/// Do promìnné phong.vao zapište id vertex arrays objektu.
+	/// Data vertexù naleznete v promìnné bunny.h/bunnyVertices - ty pøekopírujte do bufferu phong.vbo.
+	/// Data indexù naleznete v promìnné bunny.h/bunnyIndices - ty pøekopírujte do bufferu phong.ebo.
+	/// Dejte si pozor, abyste správnì nastavili stride a offset ve funkci glVertexAttribPointer.
+	/// Vrchol králièka je sloen ze dvou vertex atributù: pozice a normála.<br/>
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glGenBuffers
 	///  - glBindBuffer
 	///  - glBufferData
@@ -208,28 +200,28 @@ void phong_onInit(int32_t width, int32_t height) {
 	///  - glEnableVertexAttribArray
 	///  @}
 
-	/// \addtogroup task2 DruhÃ½ Ãºkol
+	/// \addtogroup task2 Druhı úkol
 	/// @{
-	/// \todo 2.2.) Ve funkci phong_onInit() zÃ­skejte lokace pÅ™idanÃ½ch uniformnÃ­ch promÄ›nnÃ½ch pro projekÄnÃ­ a view matice.
-	/// ZapiÅ¡te lokace do pÅ™Ã­sluÅ¡nÃ½ch poloÅ¾ek ve struktuÅ™e PhongVariables.
-	/// NezapomeÅˆte, Å¾e lokace zÃ­skÃ¡te pomocÃ­ jmÃ©na promÄ›nnÃ© v jazyce GLSL, kterÃ© jste udÄ›lali v pÅ™edchÃ¡zejÃ­cÃ­m kroku.
+	/// \todo 2.2.) Ve funkci phong_onInit() získejte lokace pøidanıch uniformních promìnnıch pro projekèní a view matice.
+	/// Zapište lokace do pøíslušnıch poloek ve struktuøe PhongVariables.
+	/// Nezapomeòte, e lokace získáte pomocí jména promìnné v jazyce GLSL, které jste udìlali v pøedcházejícím kroku.
 	/// @}
 
-	/// \addtogroup task3 TÅ™etÃ­ Ãºkol
+	/// \addtogroup task3 Tøetí úkol
 	/// @{
-	/// \todo 3.3.) Ve funkci phong_onInit() zÃ­skejte lokace pÅ™idanÃ½ch uniformnÃ­ch promÄ›nnÃ½ch pro pozici svÄ›tla a pro pozice kamery.
-	/// ZapiÅ¡te lokace do pÅ™Ã­sluÅ¡nÃ½ch poloÅ¾ek ve struktuÅ™e PhongVariables.
-	/// NezapomeÅˆte, Å¾e lokace zÃ­skÃ¡te pomocÃ­ jmÃ©na promÄ›nnÃ© v jazyce GLSL, kterÃ© jste udÄ›lali v pÅ™edchÃ¡zejÃ­cÃ­m kroku.<br/>
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// \todo 3.3.) Ve funkci phong_onInit() získejte lokace pøidanıch uniformních promìnnıch pro pozici svìtla a pro pozice kamery.
+	/// Zapište lokace do pøíslušnıch poloek ve struktuøe PhongVariables.
+	/// Nezapomeòte, e lokace získáte pomocí jména promìnné v jazyce GLSL, které jste udìlali v pøedcházejícím kroku.<br/>
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glGetUniformLocation
 	/// @}
 
-	/// \addtogroup task3 TÅ™etÃ­ Ãºkol
+	/// \addtogroup task3 Tøetí úkol
 	/// @{
-	/// \todo 3.4.) Ve funkci phong_onInit() nastavte druhÃ½ vertex atribut pro normÃ¡lu.
-	/// MusÃ­te zÃ­skat lokaci vstupnÃ­ promÄ›nnÃ© ve vertex shaderu, kterou jste pÅ™idali v pÅ™edchÃ¡zejÃ­cÃ­m kroku.
-	/// MusÃ­te sprÃ¡vnÄ› nastavit stride a offset - normÃ¡la nemÃ¡ nulovÃ½ offset.<br/>
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// \todo 3.4.) Ve funkci phong_onInit() nastavte druhı vertex atribut pro normálu.
+	/// Musíte získat lokaci vstupní promìnné ve vertex shaderu, kterou jste pøidali v pøedcházejícím kroku.
+	/// Musíte správnì nastavit stride a offset - normála nemá nulovı offset.<br/>
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glGetAttribLocation
 	///  - glVertexAttribPointer
 	///  - glEnableVertexAttribArray
@@ -277,7 +269,7 @@ void phong_onExit() {
 	glDeleteProgram(phong.program);
 }
 
-/// \addtogroup draw KreslenÃ­
+/// \addtogroup draw Kreslení
 /// @{
 
 void phong_onDraw() {
@@ -285,30 +277,30 @@ void phong_onDraw() {
 
 	glUseProgram(phong.program);
 
-	/// \addtogroup task1 PrvnÃ­ Ãºkol
+	/// \addtogroup task1 První úkol
 	/// @{
-	/// \todo 1.2.) Doprogramujte kreslÃ­cÃ­ funkci phong_onDraw().
-	/// Zde byste mÄ›li aktivovat vao a spustit kreslenÃ­.
-	/// KreslÃ­te trojÃºhelnÃ­ky, poÄet vrcholÅ¯ odpovÃ­dÃ¡ poÄtu indexÅ¯ viz promÄ›nnÃ¡ bunny.h/bunnyIndices.<br/>
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// \todo 1.2.) Doprogramujte kreslící funkci phong_onDraw().
+	/// Zde byste mìli aktivovat vao a spustit kreslení.
+	/// Kreslíte trojúhelníky, poèet vrcholù odpovídá poètu indexù viz promìnná bunny.h/bunnyIndices.<br/>
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glBindVertexArray
 	///  - glDrawElements
 	/// @}
 
-	/// \addtogroup task2 DruhÃ½ Ãºkol
+	/// \addtogroup task2 Druhı úkol
 	/// @{
 	/// \todo 2.3.) Upravte funkci phong_onDraw().
-	/// Nahrajte data matic na grafickou kartu do uniformnÃ­ch promÄ›nnÃ½ch.
-	/// AktuÃ¡lnÃ­ data matic naleznete v externÃ­ch promÄ›nnÃ½ch viewMatrix a projectionMatrix.
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// Nahrajte data matic na grafickou kartu do uniformních promìnnıch.
+	/// Aktuální data matic naleznete v externích promìnnıch viewMatrix a projectionMatrix.
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glUniformMatrix4fv
 	/// @}
 
-	/// \addtogroup task3 TÅ™etÃ­ Ãºkol
+	/// \addtogroup task3 Tøetí úkol
 	/// @{
-	/// \todo 3.5.) Ve funkci phong_onDraw() nahrajte pozici svÄ›tla a pozici kamery na GPU.
-	/// Pozice svÄ›tla a pozice kamery je v promÄ›nnÃ½ch phong.lightPosition a cameraPosition.<br/>
-	/// <b>Seznam funkcÃ­, kterÃ© jistÄ› vyuÅ¾ijete:</b>
+	/// \todo 3.5.) Ve funkci phong_onDraw() nahrajte pozici svìtla a pozici kamery na GPU.
+	/// Pozice svìtla a pozice kamery je v promìnnıch phong.lightPosition a cameraPosition.<br/>
+	/// <b>Seznam funkcí, které jistì vyuijete:</b>
 	///  - glUniform3f nebo glUniform3fv
 	/// @}
 
