@@ -5,8 +5,8 @@ Autor:	Adrián Boros (xboros03)
 E-mail: xboros03@stud.fit.vutbr.cz  
 Dátum:	2.11.2019  
 
-**Popis programu:**
-	Program slúži ako WHOIS tazatel pre zistenie podrobností o vlastníkovi domény. Na vstupe špecifikuje IP adresu (IPv4 alebo IPv6) alebo hostname. Program najprv vypíše DNS informácie a následne aj informácie ktoré obdržal od WHOIS serveru. 
+**Popis programu:**  
+Program slúži ako WHOIS tazatel pre zistenie podrobností o vlastníkovi domény. Na vstupe špecifikuje IP adresu (IPv4 alebo IPv6) alebo hostname. Program najprv vypíše DNS informácie a následne aj informácie ktoré obdržal od WHOIS serveru. 
 
 **Zoznam súborov:**
 - Makefile 		- preloženie projektu
@@ -20,7 +20,7 @@ Dátum:	2.11.2019
 - $make tar	- vytvorenie .tar archívu
 
 **Spustenie:**
-`$./isa-tazatel {-q <IP|hostname>} {-w <IP|hostname WHOIS serveru>} [-d <IP>] -h`
+`$./isa-tazatel {-q <IP|hostname>} {-w <IP|hostname WHOIS serveru>} [-d <IP>] -h`  
 Poradie argumentov je lubovolne.
 
 **Popis argumentov:**
@@ -33,5 +33,5 @@ Poradie argumentov je lubovolne.
 `$./isa-tazatel -w whois.nic.cz -q seznam.cz`
 `$./isa-tazatel -w whois.ripe.net -q aktuality.sk -d 8.8.8.8`
 
-**Rozšírenie:**
+**Rozšírenie:**  
 Je možné sa dotazovať na špecifikovaný DNS server, nielen na DNS resolver z operačného systému.
