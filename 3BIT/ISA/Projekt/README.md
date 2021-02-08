@@ -1,9 +1,9 @@
 # WHOIS tazatel
 *************
 
-Autor:	Adrián Boros (xboros03)
-E-mail: xboros03@stud.fit.vutbr.cz
-Dátum:	2.11.2019
+Autor:	Adrián Boros (xboros03)  
+E-mail: xboros03@stud.fit.vutbr.cz  
+Dátum:	2.11.2019  
 
 **Popis programu:**
 	Program slúži ako WHOIS tazatel pre zistenie podrobností o vlastníkovi domény. Na vstupe špecifikuje IP adresu (IPv4 alebo IPv6) alebo hostname. Program najprv vypíše DNS informácie a následne aj informácie ktoré obdržal od WHOIS serveru. 
