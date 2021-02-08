@@ -9,15 +9,15 @@ Dátum:	2.11.2019
 Program slúži ako WHOIS tazatel pre zistenie podrobností o vlastníkovi domény. Na vstupe špecifikuje IP adresu (IPv4 alebo IPv6) alebo hostname. Program najprv vypíše DNS informácie a následne aj informácie ktoré obdržal od WHOIS serveru. 
 
 **Zoznam súborov:**
-- Makefile 		- preloženie projektu
-- isa-tazatel.c 	- subor so zdrojovym kodom
-- manual.pdf		- dokumentacia	
-- Readme			- kratky textovy popis programu
+- *Makefile* 		- preloženie projektu
+- *isa-tazatel.c* 	- subor so zdrojovym kodom
+- *manual.pdf*		- dokumentacia	
+- *Readme*			- kratky textovy popis programu
 
 **Makefile:**
-- $make		- preloženie projektu
-- $make clean	- vymazanie preloženého projektu
-- $make tar	- vytvorenie .tar archívu
+- *$make*		- preloženie projektu
+- *$make clean*	- vymazanie preloženého projektu
+- *$make tar*	- vytvorenie .tar archívu
 
 **Spustenie:**
 `$./isa-tazatel {-q <IP|hostname>} {-w <IP|hostname WHOIS serveru>} [-d <IP>] -h`  
