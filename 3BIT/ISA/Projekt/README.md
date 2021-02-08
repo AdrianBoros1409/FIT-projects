@@ -29,7 +29,7 @@ Poradie argumentov je lubovolne.
 - ` d <IP>` - IP adresa DNS serveru ktorý bude dotazovaný, nepovinný argument
 - `h` - vypise informácie o programe aj príklad spustenia
 
-**Príklady spustenia:**
+**Príklady spustenia:**  
 `$./isa-tazatel -w whois.nic.cz -q seznam.cz`  
 `$./isa-tazatel -w whois.ripe.net -q aktuality.sk -d 8.8.8.8`
 
